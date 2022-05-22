@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    [SerializeField] private bool isAlive;
-    [SerializeField] private int numNeighbours;
+    public bool isAlive {get;set;}
+    public int numNeighbours{get;set;}
     private SpriteRenderer spriteRendR;
 
     // Start is called before the first frame update
