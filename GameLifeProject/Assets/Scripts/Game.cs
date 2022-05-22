@@ -85,7 +85,7 @@ public class Game : MonoBehaviour
                     }    
                 } 
 
-                grid[x, y].numNeighbours = numNeighbours;
+                grid[x, y].NumNeighbours = numNeighbours;
             }
         }
     }

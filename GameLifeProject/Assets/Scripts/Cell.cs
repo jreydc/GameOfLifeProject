@@ -5,7 +5,12 @@ using UnityEngine;
 public class Cell : MonoBehaviour
 {
     public bool isAlive {get;set;}
-    public int numNeighbours{get;set;}
+
+    [SerializeField]private int numNeighbours;
+    public int NumNeighbours{
+        get{return numNeighbours;}
+        set{numNeighbours = value;}
+    }
     private SpriteRenderer spriteRendR;
 
     // Start is called before the first frame update
