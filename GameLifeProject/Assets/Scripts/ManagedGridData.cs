@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridSystem : MonoBehaviour
+public class ManagedGridData : MonoBehaviour
 {
     [SerializeField]private static int width;
     [SerializeField]private static int height;

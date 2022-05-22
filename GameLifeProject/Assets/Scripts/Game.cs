@@ -100,8 +100,8 @@ public class Game : MonoBehaviour
 
     private int ComputingNeighbours(int x, int y){
         int sum = 0;
-        for(int i = -1; i < x; i++){
-            for(int j = -1; j < y; j++){
+        for(int i = -1; i < 2; i++){
+            for(int j = -1; j < 2; j++){
                 if (grid[x+i,y+j].IsAlive){
                     sum++;
                 }
