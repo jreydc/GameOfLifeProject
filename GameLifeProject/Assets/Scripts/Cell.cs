@@ -4,30 +4,20 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    public bool isAlive {get;set;}
+    [SerializeField]private bool isAlive;
+    public bool IsAlive{
+        get{return isAlive;}
+        private set{isAlive = value;}
+    }
 
-    [SerializeField]private int numNeighbours;
-    public int NumNeighbours{
+    public int numNeighbours;
+    /* public int NumNeighbours{
         get{return numNeighbours;}
         set{numNeighbours = value;}
-    }
-    private SpriteRenderer spriteRendR;
+    } */
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        isAlive = false;
-        numNeighbours = 0;
-        spriteRendR = GetComponent<SpriteRenderer>();
-    }
-
-    private void SetAlive(bool alive){
+    public void SetAlive(bool alive){
         isAlive = alive;
-
-        if(alive){
-            spriteRendR.enabled = true;
-        }else{
-            spriteRendR.enabled = false;
-        }
+        GetComponent<SpriteRenderer>().enabled = alive;
     }
 }
