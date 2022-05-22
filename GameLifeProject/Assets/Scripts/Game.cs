@@ -14,7 +14,7 @@ public class Game : MonoBehaviour
         PlaceCells();
     }
 
-    private void Update() {
+   void Update() {
         CountNeighbours();
     }
 
@@ -25,7 +25,8 @@ public class Game : MonoBehaviour
             for(int x = 0; x < SCREEN_WIDTH; x++){
                 cell_instance = Instantiate(Resources.Load("Prefab/Cell", typeof(Cell)), new Vector2(x, y), Quaternion.identity) as Cell;
                 grid[x, y] = cell_instance;
-                cell_instance.gameObject.SetActive(RandomAliveCell());
+                cell_instance.SetAlive(RandomAliveCell());
+                Debug.Log(RandomAliveCell());
             }
         }
     }
@@ -36,25 +37,25 @@ public class Game : MonoBehaviour
                 int numNeighbours = 0;
                 //North
                 if (y + 1 < SCREEN_HEIGHT){
-                    if(grid[x,y + 1].isAlive){
+                    if(grid[x,y + 1].IsAlive){
                         numNeighbours++;
                     }
                 }
                 //East
                 if(x+1 < SCREEN_WIDTH){
-                    if(grid[x+1, y].isAlive){
+                    if(grid[x+1, y].IsAlive){
                         numNeighbours++;
                     }
                 }
                 //South
                 if (y-1 >= 0){
-                    if(grid[x,y-1].isAlive){
+                    if(grid[x,y-1].IsAlive){
                         numNeighbours++;
                     }
                 }
                 //West
                 if(x-1 >= 0){
-                    if(grid[x-1, y].isAlive){
+                    if(grid[x-1, y].IsAlive){
                         numNeighbours++;
                     }
                 }
@@ -73,14 +74,14 @@ public class Game : MonoBehaviour
                 }
                 //SouthEast
                 if(x + 1 < SCREEN_WIDTH && y - 1 >= 0){
-                    if(grid[x+1, y-1].isAlive){
+                    if(grid[x+1, y-1].IsAlive){
                         numNeighbours++;
                     }
                 }
 
                 //SouthWest
                 if(x - 1 >= 0 && y - 1 >= 0){
-                    if(grid[x-1, y-1].isAlive){
+                    if(grid[x-1, y-1].IsAlive){
                         numNeighbours++;
                     }    
                 } 
@@ -92,7 +93,6 @@ public class Game : MonoBehaviour
 
     private bool RandomAliveCell(){
         int rand = UnityEngine.Random.Range(0, 100);
-
         if (rand > 75){
             return true;
         }
