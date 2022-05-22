@@ -10,7 +10,7 @@ public class Cell : MonoBehaviour
         private set{_isAlive = value;}
     }
 
-    private int _numNeighbours = 0;
+    [SerializeField]private int _numNeighbours;
     public int NumNeighbours{
         get{return _numNeighbours;}
         set{_numNeighbours = value;}

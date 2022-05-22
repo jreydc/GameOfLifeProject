@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    private GridSystem _gridManaged;
-
-    [SerializeField]private int x;
-    [SerializeField]private int y;
+    private GridSystem _gridManaged;  
 
     private void Start(){
-        _gridManaged.CreateEmptyGrid(x, y);
+        _gridManaged.CellManagement();
     }
 
 

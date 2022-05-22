@@ -14,12 +14,12 @@ public class Game : MonoBehaviour
         PlaceCells();
     }
 
-   void LateUpdate() {
+   void Update() {
         CountNeighbours();
     }
 
     private void PlaceCells(){
-       /*  Cell cell_instance;
+        Cell cell_instance;
         //Setting up Cells
         for(int y = 0; y < SCREEN_HEIGHT; y++){
             for(int x = 0; x < SCREEN_WIDTH; x++){
@@ -27,16 +27,14 @@ public class Game : MonoBehaviour
                 grid[x, y] = cell_instance;
                 cell_instance.SetAlive(RandomAliveCell());
             }
-        } */
+        }
     }
 
     void CountNeighbours(){
         for(int y = 0; y < SCREEN_HEIGHT; y++){
             for(int x = 0; x < SCREEN_WIDTH; x++){
-                int total = 4; //ComputingNeighbours(x, y);
-                 Debug.Log(total+""+ x+""+ y);
-
-                 //North
+                int total = ComputingNeighbours(x, y);
+                 /* //North
                 if (y + 1 < SCREEN_HEIGHT){
                     if(grid[x,y + 1].IsAlive){
                         total+=1;
@@ -83,9 +81,9 @@ public class Game : MonoBehaviour
                     if(grid[x - 1, y - 1].IsAlive){
                         total+=1;
                     }    
-                }  
+                }   */
                 
-               
+                Debug.Log(total+""+ x+""+ y);
                 grid[x, y].NumNeighbours = total;
             }
         }
