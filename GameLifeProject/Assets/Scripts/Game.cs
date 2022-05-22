@@ -14,79 +14,79 @@ public class Game : MonoBehaviour
         PlaceCells();
     }
 
-   void Update() {
+   void LateUpdate() {
         CountNeighbours();
     }
 
     private void PlaceCells(){
-        Cell cell_instance;
+       /*  Cell cell_instance;
         //Setting up Cells
         for(int y = 0; y < SCREEN_HEIGHT; y++){
             for(int x = 0; x < SCREEN_WIDTH; x++){
                 cell_instance = Instantiate(Resources.Load("Prefab/Cell", typeof(Cell)), new Vector2(x, y), Quaternion.identity) as Cell;
                 grid[x, y] = cell_instance;
                 cell_instance.SetAlive(RandomAliveCell());
-                Debug.Log(RandomAliveCell());
             }
-        }
+        } */
     }
 
-    private void CountNeighbours(){
+    void CountNeighbours(){
         for(int y = 0; y < SCREEN_HEIGHT; y++){
             for(int x = 0; x < SCREEN_WIDTH; x++){
-                int numNeighbours = 0;
-                //North
+                int total = 4; //ComputingNeighbours(x, y);
+                 Debug.Log(total+""+ x+""+ y);
+
+                 //North
                 if (y + 1 < SCREEN_HEIGHT){
                     if(grid[x,y + 1].IsAlive){
-                        numNeighbours++;
+                        total+=1;
                     }
                 }
                 //East
-                if(x+1 < SCREEN_WIDTH){
-                    if(grid[x+1, y].IsAlive){
-                        numNeighbours++;
+                if(x + 1 < SCREEN_WIDTH){
+                    if(grid[x + 1, y].IsAlive){
+                        total+=1;
                     }
                 }
                 //South
-                if (y-1 >= 0){
-                    if(grid[x,y-1].IsAlive){
-                        numNeighbours++;
+                if (y - 1 >= 0){
+                    if(grid[x,y - 1].IsAlive){
+                        total+=1;
                     }
                 }
                 //West
-                if(x-1 >= 0){
-                    if(grid[x-1, y].IsAlive){
-                        numNeighbours++;
+                if(x - 1 >= 0){
+                    if(grid[x - 1, y].IsAlive){
+                        total+=1;
                     }
                 }
                 //NorthEast
                 if(x + 1 < SCREEN_WIDTH && y + 1 < SCREEN_HEIGHT){
-                    if(grid[x-1, y+1]){
-                        numNeighbours++;
+                    if(grid[x - 1, y + 1].IsAlive){
+                        total+=1;
                     }    
                 }
-
                 //NorthWest
                 if(x - 1 >= 0 && y + 1 < SCREEN_HEIGHT){
-                    if(grid[x-1, y+1]){
-                        numNeighbours++;
+                    if(grid[x - 1, y + 1].IsAlive){
+                        total+=1;
                     }    
                 }
                 //SouthEast
                 if(x + 1 < SCREEN_WIDTH && y - 1 >= 0){
-                    if(grid[x+1, y-1].IsAlive){
-                        numNeighbours++;
+                    if(grid[x + 1, y - 1].IsAlive){
+                        total+=1;
                     }
                 }
-
                 //SouthWest
                 if(x - 1 >= 0 && y - 1 >= 0){
-                    if(grid[x-1, y-1].IsAlive){
-                        numNeighbours++;
+                    if(grid[x - 1, y - 1].IsAlive){
+                        total+=1;
                     }    
-                } 
-
-                grid[x, y].numNeighbours = numNeighbours;
+                }  
+                
+               
+                grid[x, y].NumNeighbours = total;
             }
         }
     }
@@ -100,17 +100,16 @@ public class Game : MonoBehaviour
         return false;
     }
 
-    /* private int ComputingNeighbours(int x, int y){
-        Cell[,] gridNeighbours = new Cell[x,y];
+    private int ComputingNeighbours(int x, int y){
         int sum = 0;
         for(int i = -1; i < x; i++){
             for(int j = -1; j < y; j++){
-                if (gridNeighbours[i][j].isAlive){
+                if (grid[x+i,y+j].IsAlive){
                     sum++;
                 }
             }
         }
 
         return sum;
-    } */
+    }
 }
