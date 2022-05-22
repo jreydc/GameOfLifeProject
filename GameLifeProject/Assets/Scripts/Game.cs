@@ -14,6 +14,10 @@ public class Game : MonoBehaviour
         PlaceCells();
     }
 
+    private void Update() {
+        CountNeighbours();
+    }
+
     private void PlaceCells(){
         Cell cell_instance;
         //Setting up Cells
@@ -26,7 +30,67 @@ public class Game : MonoBehaviour
         }
     }
 
-    bool RandomAliveCell(){
+    private void CountNeighbours(){
+        for(int y = 0; y < SCREEN_HEIGHT; y++){
+            for(int x = 0; x < SCREEN_WIDTH; x++){
+                int numNeighbours = 0;
+                //North
+                if (y + 1 < SCREEN_HEIGHT){
+                    if(grid[x,y + 1].isAlive){
+                        numNeighbours++;
+                    }
+                }
+                //East
+                if(x+1 < SCREEN_WIDTH){
+                    if(grid[x+1, y].isAlive){
+                        numNeighbours++;
+                    }
+                }
+                //South
+                if (y-1 >= 0){
+                    if(grid[x,y-1].isAlive){
+                        numNeighbours++;
+                    }
+                }
+                //West
+                if(x-1 >= 0){
+                    if(grid[x-1, y].isAlive){
+                        numNeighbours++;
+                    }
+                }
+                //NorthEast
+                if(x + 1 < SCREEN_WIDTH && y + 1 < SCREEN_HEIGHT){
+                    if(grid[x-1, y+1]){
+                        numNeighbours++;
+                    }    
+                }
+
+                //NorthWest
+                if(x - 1 >= 0 && y + 1 < SCREEN_HEIGHT){
+                    if(grid[x-1, y+1]){
+                        numNeighbours++;
+                    }    
+                }
+                //SouthEast
+                if(x + 1 < SCREEN_WIDTH && y - 1 >= 0){
+                    if(grid[x+1, y-1].isAlive){
+                        numNeighbours++;
+                    }
+                }
+
+                //SouthWest
+                if(x - 1 >= 0 && y - 1 >= 0){
+                    if(grid[x-1, y-1].isAlive){
+                        numNeighbours++;
+                    }    
+                } 
+
+                grid[x, y].numNeighbours = numNeighbours;
+            }
+        }
+    }
+
+    private bool RandomAliveCell(){
         int rand = UnityEngine.Random.Range(0, 100);
 
         if (rand > 75){
@@ -35,4 +99,18 @@ public class Game : MonoBehaviour
 
         return false;
     }
+
+    /* private int ComputingNeighbours(int x, int y){
+        Cell[,] gridNeighbours = new Cell[x,y];
+        int sum = 0;
+        for(int i = -1; i < x; i++){
+            for(int j = -1; j < y; j++){
+                if (gridNeighbours[i][j].isAlive){
+                    sum++;
+                }
+            }
+        }
+
+        return sum;
+    } */
 }
