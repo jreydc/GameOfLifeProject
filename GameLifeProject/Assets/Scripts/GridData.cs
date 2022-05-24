@@ -5,8 +5,7 @@ using UnityEngine;
 public class GridData : MonoBehaviour
 {
     public GridAttrib _gridAttrib;
-public Cell[,] grid;
-    public int CellCount => _gridAttrib.x * _gridAttrib.y;
+    public Cell[,] grid;
     private static GridData _current;
     public static GridData GridInstance
     {
