@@ -29,7 +29,7 @@ public class GridManager : MonoBehaviour
     }
 
     private GameObject[,] CreateGrid(int rows, int cols){
-        GameObject[,] grid = new GameObject[rows, cols];
+        grid = new GameObject[rows, cols];
         return grid;
     }
 

@@ -234,8 +234,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gridAttrib:
-    x: 0
-    y: 0
+    width: 0
+    height: 0
 --- !u!4 &1066114594
 Transform:
   m_ObjectHideFlags: 0
@@ -336,3 +336,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d144d282ba5bb40a78b519f42b77e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gridModel: {fileID: 1066114593}

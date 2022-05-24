@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    private GridData _gridModel;
+    [SerializeField]private GridData _gridModel;
 
     private Cell[,] grid;
 
-    void Start(){
-        _gridModel.GridCreation();
-        _gridModel.CellManagement();
+    private void Start(){
+        _gridModel.GridCreation(10, 10);
+        _gridModel.CellManagement(10, 10);
+    }
+
+    private void Update(){
+        _gridModel.Neighbours();
     }
 
 
