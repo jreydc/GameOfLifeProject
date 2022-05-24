@@ -7,8 +7,8 @@ public class GridManager : MonoBehaviour
     GameObject[,] grid;
     GameObject[,] nextGrid;
     
-    private int rows = 48;
-    private int cols = 64;
+    private int rows = 20;
+    private int cols = 20;
 
 
     // Start is called before the first frame update
