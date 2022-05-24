@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = Unity.Mathematics.Random;
 
-[System.Serializable]
-public class GridData
+public class GridData : MonoBehaviour
 {
     public GridAttrib _gridAttrib;
+public Cell[,] grid;
     public int CellCount => _gridAttrib.x * _gridAttrib.y;
     private static GridData _current;
     public static GridData GridInstance
@@ -20,5 +19,15 @@ public class GridData
 
             return _current;
         }
+    }
+
+
+
+    public void GridCreation(){
+
+    }
+
+    public void CellManagement(){
+
     }
 }

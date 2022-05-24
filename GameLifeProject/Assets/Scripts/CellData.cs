@@ -5,6 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public struct CellData
 {
-    public bool isAlive;
-    public int neighbours;
+    public int x;
+    public int y;
 }
