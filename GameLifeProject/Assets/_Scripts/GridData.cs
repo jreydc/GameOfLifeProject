@@ -40,7 +40,7 @@ public class GridData : MonoBehaviour
             {
                 int total = 0;
                 total = ComputingNeighbours(x, y);
-                grid[x,y].NumNeighbours = total;    
+                grid[x,y].NumNeighbours = total - 1;    
             }
             
         }
@@ -67,6 +67,7 @@ public class GridData : MonoBehaviour
         {
             for (int y = 0; y < _gridAttrib.height; y++)
             {
+                cell_instance = grid[x, y];
                 if (!cell_instance.IsAlive && (cell_instance.NumNeighbours == 3)){
                     cell_instance.SetAlive(true);
                 }else if (cell_instance.IsAlive && (cell_instance.NumNeighbours < 2 || cell_instance.NumNeighbours > 3)){

@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     private Cell[,] grid;
 
     private void Start(){
+        Debug.Log((1 + (-1) + 10) % 10);
         _gridModel.GridCreation(30, 30);
         _gridModel.CellManagement(30, 30);
     }
