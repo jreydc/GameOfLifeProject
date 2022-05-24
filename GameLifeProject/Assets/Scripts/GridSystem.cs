@@ -4,25 +4,40 @@ using UnityEngine;
 
 public class GridSystem : MonoBehaviour
 {
-    [SerializeField]private static int width;
-    [SerializeField]private static int height;
-
+    [SerializeField]private int width = 5;
+    [SerializeField]private int height = 8;
+    [SerializeField]private float tileSize = 1;
     private GridData _gridData;
     private GridAttrib _gridAttrib;
     private CellData _cell;
-    private Cell[,] grid = new Cell[width, height];
+    Cell[,] grid;
+    //private Cell[,] grid = new Cell[width, height];
 
+    private void Start() {
+        CellManagement(width, height);
+    }
     
-    public void CellManagement(){
-        Cell cell_instance;
+    public void CellManagement(int w, int h){
+        Cell referenceCell = (Cell)Instantiate(Resources.Load("Prefab/Cell"));
+        grid = new Cell[w, h];
         //Setting up Cells
-        for(int x = 0; x < grid.GetLength(0); x++){
-            for(int y = 0; y < grid.GetLength(1); y++){
-                cell_instance = Instantiate(Resources.Load("Prefab/Cell", typeof(Cell)), new Vector2(x, y), Quaternion.identity) as Cell;
-                grid[x, y] = cell_instance;
+        for(int x = 0; x < h; x++){
+            for(int y = 0; y < w; y++){
+                Cell cell_instance = Instantiate(referenceCell, transform);
+                float posX = h * tileSize;
+                float posY = w * -tileSize;
+
+                cell_instance.transform.position = new Vector2(posX, posY);
                 cell_instance.SetAlive(RandomAliveCell());
             }
         }
+        Destroy(referenceCell);
+
+        Debug.Log(w+"-"+h);
+        float gridW = width * tileSize;
+        float gridH = height * -tileSize;
+
+        transform.position = new Vector2 (-gridW / 2 + tileSize / 2, gridH / 2 - tileSize / 2);
     }
 
     private bool RandomAliveCell(){

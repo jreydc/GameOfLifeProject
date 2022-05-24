@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    private GridSystem _gridManaged;  
+    private GridSystem _gridManaged;
+    private Cell[,] grid;
 
     private void Start(){
-        _gridManaged.CellManagement();
+        //_gridManaged.CellManagement();
     }
 
 

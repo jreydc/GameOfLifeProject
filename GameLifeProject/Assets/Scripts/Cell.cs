@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
+    public static Cell _instance;
     [SerializeField]private bool _isAlive;
     public bool IsAlive{
         get{return _isAlive;}
