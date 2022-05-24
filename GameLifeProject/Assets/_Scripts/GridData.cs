@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GridData : MonoBehaviour
 {
+    public static GridData  _gridDataInstance;
     public GridAttrib _gridAttrib;
     private Cell[,] grid;
     private GameObject[,] tilemap;
@@ -13,7 +14,7 @@ public class GridData : MonoBehaviour
         grid = new Cell[rows, cols];
         _gridAttrib.width = rows;
         _gridAttrib.height = cols;
-        Debug.Log("Grid Creation");
+        Debug.Log("Grid Creation"+_gridAttrib.width+"-"+_gridAttrib.height);
     }
 
     public void CellManagement(int rows, int cols){
