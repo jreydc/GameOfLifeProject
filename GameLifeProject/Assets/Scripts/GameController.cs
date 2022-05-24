@@ -9,12 +9,13 @@ public class GameController : MonoBehaviour
     private Cell[,] grid;
 
     private void Start(){
-        _gridModel.GridCreation(10, 10);
-        _gridModel.CellManagement(10, 10);
+        _gridModel.GridCreation(30, 30);
+        _gridModel.CellManagement(30, 30);
     }
 
     private void Update(){
         _gridModel.Neighbours();
+        _gridModel.PopulationControl();
     }
 
 

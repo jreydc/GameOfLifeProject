@@ -48,21 +48,36 @@ public class GridData : MonoBehaviour
 
     private int ComputingNeighbours(int x, int y){
         int sum = 0;
-        Cell cell_instance;
         for(int i = -1; i < 2; i++){
             for(int j = -1; j < 2; j++){
-                x = (x + i + _gridAttrib.width) % _gridAttrib.width;
-                y = (y + j + _gridAttrib.height) % _gridAttrib.height;
+                x = (grid[x,y].cellInfo.x + i + _gridAttrib.width) % _gridAttrib.width;
+                y = (grid[x,y].cellInfo.y + j + _gridAttrib.height) % _gridAttrib.height;
 
                 cell_instance = grid[x,y];
                 if (cell_instance.GetComponent<Cell>().IsAlive){
-                    sum++;
+                    sum+=1;
                 }
-                Debug.Log(cell_instance+"-"+ x +"-"+y);
             }
         }  
         return sum;
     }
+
+    public void PopulationControl(){
+        for (int x = 0; x < _gridAttrib.width; x++)
+        {
+            for (int y = 0; y < _gridAttrib.height; y++)
+            {
+                if (!cell_instance.IsAlive && (cell_instance.NumNeighbours == 3)){
+                    cell_instance.SetAlive(true);
+                }else if (cell_instance.IsAlive && (cell_instance.NumNeighbours < 2 || cell_instance.NumNeighbours > 3)){
+                    cell_instance.SetAlive(false);
+                }else{
+                    cell_instance.SetAlive(cell_instance.IsAlive);
+                }
+            }
+        }
+    }
+
     private bool RandomAliveCell(){
         int rand = UnityEngine.Random.Range(0, 100);
         if (rand > 75){
