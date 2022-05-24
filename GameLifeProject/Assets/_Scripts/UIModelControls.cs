@@ -13,5 +13,6 @@ public class UIModelControls : MonoBehaviour
     public void GridUIControls(){
         GridData._gridDataInstance._gridAttrib.width = int.Parse(_inputWidth.text);
         GridData._gridDataInstance._gridAttrib.height = int.Parse(_inputHeight.text);
+        Debug.Log("GridUIControls");
     }
 }
