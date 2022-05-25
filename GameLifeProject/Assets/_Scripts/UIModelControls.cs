@@ -9,10 +9,13 @@ public class UIModelControls : MonoBehaviour
     [SerializeField]private InputField _inputHeight;
     [SerializeField]private Button _submit;
 
+    private void Start(){
+        _submit.onClick.AddListener(GridUIControls);
+    }
 
     public void GridUIControls(){
         GridData._gridDataInstance._gridAttrib.width = int.Parse(_inputWidth.text);
         GridData._gridDataInstance._gridAttrib.height = int.Parse(_inputHeight.text);
-        Debug.Log("GridUIControls");
+        Debug.Log("GridUIControls"+_inputWidth+_inputHeight);
     }
 }

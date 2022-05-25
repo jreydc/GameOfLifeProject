@@ -41,7 +41,7 @@ public class GridData : MonoBehaviour
             {
                 int total = 0;
                 total = ComputingNeighbours(x, y);
-                grid[x,y].NumNeighbours = total - 1;    
+                grid[x,y].NumNeighbours = total;    
             }
             
         }
@@ -49,11 +49,24 @@ public class GridData : MonoBehaviour
 
     private int ComputingNeighbours(int x, int y){
         int sum = 0;
+        if (grid[x, y].cellInfo.x < 1){
+            x = 1;
+        }else if(grid[x, y].cellInfo.x >= _gridAttrib.width){
+            x = _gridAttrib.width - 1;
+        }else if(grid[x, y].cellInfo.y < 1){
+            y = 1;
+        }else if(grid[x, y].cellInfo.y >= _gridAttrib.height){
+            y = _gridAttrib.height - 1;
+        }else{
+            grid[x, y].cellInfo.x = x;
+            grid[x, y].cellInfo.y = y;
+        }
+
         for(int i = -1; i < 2; i++){
             for(int j = -1; j < 2; j++){
                 x = (grid[x,y].cellInfo.x + i + _gridAttrib.width) % _gridAttrib.width;
                 y = (grid[x,y].cellInfo.y + j + _gridAttrib.height) % _gridAttrib.height;
-
+            
                 cell_instance = grid[x,y];
                 if (cell_instance.GetComponent<Cell>().IsAlive){
                     sum+=1;
