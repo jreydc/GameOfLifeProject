@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
 
     private Cell[,] grid;
 
+    enum Choices{ GridDimension, Colors, Speed };
+
     private void Start(){
         _gridModel._gridAttrib.defaultHeight = 30;
         _gridModel._gridAttrib.defaultWidth = 30;
@@ -27,5 +29,11 @@ public class GameController : MonoBehaviour
     public void SetGridDimension(){
         _uiControl.GridUIControls();
     }
+
+    public void SetCellColors(){
+        _uiControl.RandomizedColors();
+    }
+
+   
 
 }
