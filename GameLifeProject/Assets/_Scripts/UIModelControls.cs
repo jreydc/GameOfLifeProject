@@ -5,23 +5,23 @@ using UnityEngine.UI;
 
 public class UIModelControls : MonoBehaviour
 {
-    [SerializeField]private InputField _inputWidth;
-    [SerializeField]private InputField _inputHeight;
-    [SerializeField]private Button _submit;
+    private InputField _inputWidth;
+    private InputField _inputHeight;
+    private Button _submit;
 
     [SerializeField]private Dropdown dropdown;
-    [SerializeField]private GameObject gridPanel;
-    [SerializeField]private GameObject colorPanel;
-    [SerializeField]private GameObject speedPanel;
+    [SerializeField]private Image gridPanel;
+    [SerializeField]private Image colorPanel;
+    [SerializeField]private Image speedPanel;
 
 
-    private void Start(){
-        dropdown.GetComponent<Dropdown>();
-        dropdown.onValueChanged.AddListener(DropdownItemSelected(dropdown));
+    private void Start(){ 
+        dropdown = GetComponent<Dropdown>();
+        //dropdown.onValueChanged.AddListener(DropdownItemSelected(dropdown));
         _submit.onClick.AddListener(GridUIControls);
     }
 
-    private void DropdownItemSelected(Dropdown dropdown){
+    /* private void DropdownItemSelected(Dropdown dropdown){
         int index = dropdown.value;
 
         if (index == 0){
@@ -31,7 +31,7 @@ public class UIModelControls : MonoBehaviour
         }else{
             speedPanel.setActive(true);
         }
-    }
+    } */
 
     public void GridUIControls(){
         GridData._gridDataInstance._gridAttrib.width = int.Parse(_inputWidth.text);
