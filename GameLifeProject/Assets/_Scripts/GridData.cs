@@ -35,12 +35,82 @@ public class GridData : ScriptableObject
     public void Neighbours(){
         for (int x = 0; x < _gridAttrib.width; x++)
         {
-            int total = 0;
             for (int y = 0; y < _gridAttrib.height; y++)
             {
-                total = ComputingNeighbours(x, y);
+                /* total = ComputingNeighbours(x, y);
                 grid[x,y].NumNeighbours = total;
-                //Debug.Log(x+"-"+y);    
+                //Debug.Log(x+"-"+y);  */
+
+                //other algorithm for GOL
+                int numNeighbors = 0;
+
+                //North
+                if (y + 1 < _gridAttrib.height)
+                {
+                    if (grid[x, y + 1].IsAlive)
+                    {
+                        numNeighbors++;
+                    }
+                }
+                //East
+                if (x + 1 < _gridAttrib.width)
+                {
+                    if (grid[x + 1, y].IsAlive)
+                    {
+                        numNeighbors++;
+                    }
+
+                }
+                //South
+                if (y - 1 >= 0)
+                {
+                    if (grid[x, y - 1].IsAlive)
+                    {
+                        numNeighbors++;
+                    }
+                }
+                //West
+                if (x - 1 >= 0)
+                {
+                    if (grid[x - 1, y].IsAlive)
+                    {
+                        numNeighbors++;
+                    }
+                }
+                //North East
+                if (x + 1 < _gridAttrib.width && y + 1 < _gridAttrib.height)
+                {
+                    if (grid[x + 1, y + 1].IsAlive)
+                    {
+                        numNeighbors++;
+                    }
+                }
+                //North West
+                if (x - 1 >= 0 && y + 1 < _gridAttrib.height)
+                {
+                    if (grid[x - 1, y + 1].IsAlive)
+                    {
+                        numNeighbors++;
+                    }
+                }
+                //SouthEast
+                if (x + 1 < _gridAttrib.width && y - 1 >= 0)
+                {
+                    if (grid[x + 1, y - 1].IsAlive)
+                    {
+                        numNeighbors++;
+                    }
+                }
+                //SouthWest
+                if (x - 1 >= 0 && y - 1 >= 0)
+                {
+                    if (grid[x - 1, y - 1].IsAlive)
+                    {
+                        numNeighbors++;
+                    }
+                }
+                grid[x, y].NumNeighbours = numNeighbors;
+
             }
             
         }

@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class UIModelControls : MonoBehaviour
 {
-    private InputField _inputWidth;
-    private InputField _inputHeight;
+    [SerializeField]private InputField _inputWidth;
+    [SerializeField]private InputField _inputHeight;
     private Button _submit;
     private bool selected;
     [SerializeField]private Dropdown dropdown;
@@ -20,19 +20,6 @@ public class UIModelControls : MonoBehaviour
         dropdown = GetComponent<Dropdown>();
         dropdown.ClearOptions();
         selected = true;
-    }
-
-    private void DropdownItemSelected(Dropdown dropdown){
-        int index = dropdown.value;
-
-        if (index == 0){
-            gridPanel.SetActive(true);
-        }else if (index == 1){
-            colorPanel.SetActive(true);
-        }else{
-            speedPanel.SetActive(true);
-        }
-
     }
 
     public void GridUIControls(){
