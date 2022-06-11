@@ -10,6 +10,7 @@ public class UIModelControls : MonoBehaviour
     private Button _submit;
     private bool selected;
     [SerializeField]private Dropdown dropdown;
+    [SerializeField]private GameObject dropdownPanel;
     [SerializeField]private GameObject gridPanel;
     [SerializeField]private GameObject colorPanel;
     [SerializeField]private GameObject speedPanel;

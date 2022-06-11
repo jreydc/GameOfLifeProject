@@ -35,11 +35,12 @@ public class GridData : ScriptableObject
     public void Neighbours(){
         for (int x = 0; x < _gridAttrib.width; x++)
         {
+            int total = 0;
             for (int y = 0; y < _gridAttrib.height; y++)
             {
-                int total = 0;
                 total = ComputingNeighbours(x, y);
-                grid[x,y].NumNeighbours = total;    
+                grid[x,y].NumNeighbours = total;
+                Debug.Log(x+"-"+y);    
             }
             
         }
@@ -47,8 +48,7 @@ public class GridData : ScriptableObject
 
     private int ComputingNeighbours(int x, int y){
         int sum = 0;
-        cell_instance = grid[x,y];
-        cell_instance = cell_instance.GetComponent<Cell>();
+        Cell cell_instance = grid[x,y];
         for(int i = -1; i < 2; i++){
             for(int j = -1; j < 2; j++){
                 x = (cell_instance.cellInfo.x + i + _gridAttrib.width) % _gridAttrib.width;
