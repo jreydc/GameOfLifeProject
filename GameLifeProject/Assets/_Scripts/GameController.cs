@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
 
     private void Update(){
         _gridModel.Neighbours();
-        //_gridModel.PopulationControl();
+        _gridModel.PopulationControl();
     }
 
     public void SetGridDimension(){

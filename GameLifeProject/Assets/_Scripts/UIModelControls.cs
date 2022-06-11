@@ -56,9 +56,9 @@ public class UIModelControls : MonoBehaviour
 
     public void PanelOnDisplay(){
         if (dropdown.captionText.text == "Grid Dimension"){
-            gridPanel.SetActive(true);
-            colorPanel.SetActive(false);
-            speedPanel.SetActive(false);
+            gridPanel.SetActive(selected);
+            colorPanel.SetActive(!selected);
+            speedPanel.SetActive(!selected);
         }else if (dropdown.captionText.text == "Cell Color"){
             colorPanel.SetActive(true);
             gridPanel.SetActive(false);
@@ -80,7 +80,7 @@ public class UIModelControls : MonoBehaviour
     }
 
     public void DisablePanels(){
-            dropdown.ClearOptions();
+            //dropdown.ClearOptions();
             gridPanel.SetActive(false);
             colorPanel.SetActive(false);
             speedPanel.SetActive(false);

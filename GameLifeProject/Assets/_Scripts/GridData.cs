@@ -40,7 +40,7 @@ public class GridData : ScriptableObject
             {
                 total = ComputingNeighbours(x, y);
                 grid[x,y].NumNeighbours = total;
-                Debug.Log(x+"-"+y);    
+                //Debug.Log(x+"-"+y);    
             }
             
         }
@@ -48,7 +48,8 @@ public class GridData : ScriptableObject
 
     private int ComputingNeighbours(int x, int y){
         int sum = 0;
-        Cell cell_instance = grid[x,y];
+        cell_instance = grid[x,y];
+        Debug.Log(x+"-"+y);    
         for(int i = -1; i < 2; i++){
             for(int j = -1; j < 2; j++){
                 x = (cell_instance.cellInfo.x + i + _gridAttrib.width) % _gridAttrib.width;
