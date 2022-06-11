@@ -47,7 +47,7 @@ public class UIModelControls : MonoBehaviour
     }
 
     public void DropdownDisplay(){
-
+        dropdownPanel.SetActive(true);
     }
 
     public void PanelOnDisplay(){
