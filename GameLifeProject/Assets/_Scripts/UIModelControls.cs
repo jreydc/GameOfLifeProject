@@ -46,8 +46,12 @@ public class UIModelControls : MonoBehaviour
         cell_instance.Colors = UnityEngine.Random.ColorHSV(); */
     }
 
-    public void DropdownDisplay(){
+    public void DropdownDisplayEnabled(){
         dropdownPanel.SetActive(true);
+    }
+
+    public void DropdownDisplayDisabled(){
+        dropdownPanel.SetActive(false);
     }
 
     public void PanelOnDisplay(){
