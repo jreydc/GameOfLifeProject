@@ -8,30 +8,31 @@ public class UIModelControls : MonoBehaviour
     private InputField _inputWidth;
     private InputField _inputHeight;
     private Button _submit;
-
+    private bool selected;
     [SerializeField]private Dropdown dropdown;
-    [SerializeField]private Image gridPanel;
-    [SerializeField]private Image colorPanel;
-    [SerializeField]private Image speedPanel;
+    [SerializeField]private GameObject gridPanel;
+    [SerializeField]private GameObject colorPanel;
+    [SerializeField]private GameObject speedPanel;
 
 
     private void Start(){ 
         dropdown = GetComponent<Dropdown>();
-        //dropdown.onValueChanged.AddListener(DropdownItemSelected(dropdown));
-        _submit.onClick.AddListener(GridUIControls);
+        dropdown.ClearOptions();
+        selected = true;
     }
 
-    /* private void DropdownItemSelected(Dropdown dropdown){
+    private void DropdownItemSelected(Dropdown dropdown){
         int index = dropdown.value;
 
         if (index == 0){
-            gridPanel.setActive(true);
+            gridPanel.SetActive(true);
         }else if (index == 1){
-            colorPanel.setActive(true);
+            colorPanel.SetActive(true);
         }else{
-            speedPanel.setActive(true);
+            speedPanel.SetActive(true);
         }
-    } */
+
+    }
 
     public void GridUIControls(){
         GridData._gridDataInstance._gridAttrib.width = int.Parse(_inputWidth.text);
@@ -40,9 +41,45 @@ public class UIModelControls : MonoBehaviour
     }
 
     public void RandomizedColors(){
-        Cell cell_instance = Instantiate(Resources.Load("Prefab/Cell", typeof(Cell)), transform.position, Quaternion.identity) as Cell;
-        //cell_instance.SpriteRenderer.Colors = UnityEngine.Random.ColorHSV();
+        /* Cell cell_instance = Instantiate(Resources.Load("Prefab/Cell", typeof(Cell)), transform.position, Quaternion.identity) as Cell;
+        cell_instance.Colors = UnityEngine.Random.ColorHSV(); */
     }
 
-    
+    public void DropdownDisplay(){
+
+    }
+
+    public void PanelOnDisplay(){
+        if (dropdown.captionText.text == "Grid Dimension"){
+            gridPanel.SetActive(true);
+            colorPanel.SetActive(false);
+            speedPanel.SetActive(false);
+        }else if (dropdown.captionText.text == "Cell Color"){
+            colorPanel.SetActive(true);
+            gridPanel.SetActive(false);
+            speedPanel.SetActive(false);
+        }else if (dropdown.captionText.text == "Speed"){
+            speedPanel.SetActive(true);
+            colorPanel.SetActive(false);
+            gridPanel.SetActive(false);
+        }else{
+            DisablePanels();
+        }
+        
+    }
+
+    public void EnablePanels(){
+            gridPanel.SetActive(selected);
+            colorPanel.SetActive(selected);
+            speedPanel.SetActive(selected);
+    }
+
+    public void DisablePanels(){
+            dropdown.ClearOptions();
+            gridPanel.SetActive(false);
+            colorPanel.SetActive(false);
+            speedPanel.SetActive(false);
+    }
+
+
 }

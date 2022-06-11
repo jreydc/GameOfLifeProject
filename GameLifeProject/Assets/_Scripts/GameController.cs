@@ -12,8 +12,8 @@ public class GameController : MonoBehaviour
     enum Choices{ GridDimension, Colors, Speed };
 
     private void Start(){
-        _gridModel._gridAttrib.defaultHeight = 30;
-        _gridModel._gridAttrib.defaultWidth = 30;
+        _gridModel._gridAttrib.defaultHeight = 6;
+        _gridModel._gridAttrib.defaultWidth = 6;
         _gridModel._gridAttrib.width = _gridModel._gridAttrib.defaultWidth;
         _gridModel._gridAttrib.height = _gridModel._gridAttrib.defaultHeight;
 
