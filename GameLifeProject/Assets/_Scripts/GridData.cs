@@ -42,75 +42,65 @@ public class GridData : ScriptableObject
                 //Debug.Log(x+"-"+y);  */
 
                 //other algorithm for GOL
-                int numNeighbors = 0;
-
+                int totalNeighbors = 0;
                 //North
-                if (y + 1 < _gridAttrib.height)
-                {
+                if (y + 1 < _gridAttrib.height){
                     if (grid[x, y + 1].IsAlive)
                     {
-                        numNeighbors++;
+                        totalNeighbors++;
                     }
                 }
                 //East
-                if (x + 1 < _gridAttrib.width)
-                {
+                if (x + 1 < _gridAttrib.width){
                     if (grid[x + 1, y].IsAlive)
                     {
-                        numNeighbors++;
+                        totalNeighbors++;
                     }
 
                 }
                 //South
-                if (y - 1 >= 0)
-                {
+                if (y - 1 >= 0){
                     if (grid[x, y - 1].IsAlive)
                     {
-                        numNeighbors++;
+                        totalNeighbors++;
                     }
                 }
                 //West
-                if (x - 1 >= 0)
-                {
+                if (x - 1 >= 0){
                     if (grid[x - 1, y].IsAlive)
                     {
-                        numNeighbors++;
+                        totalNeighbors++;
                     }
                 }
                 //North East
-                if (x + 1 < _gridAttrib.width && y + 1 < _gridAttrib.height)
-                {
+                if (x + 1 < _gridAttrib.width && y + 1 < _gridAttrib.height){
                     if (grid[x + 1, y + 1].IsAlive)
                     {
-                        numNeighbors++;
+                        totalNeighbors++;
                     }
                 }
                 //North West
-                if (x - 1 >= 0 && y + 1 < _gridAttrib.height)
-                {
+                if (x - 1 >= 0 && y + 1 < _gridAttrib.height){
                     if (grid[x - 1, y + 1].IsAlive)
                     {
-                        numNeighbors++;
+                        totalNeighbors++;
                     }
                 }
                 //SouthEast
-                if (x + 1 < _gridAttrib.width && y - 1 >= 0)
-                {
+                if (x + 1 < _gridAttrib.width && y - 1 >= 0){
                     if (grid[x + 1, y - 1].IsAlive)
                     {
-                        numNeighbors++;
+                        totalNeighbors++;
                     }
                 }
                 //SouthWest
-                if (x - 1 >= 0 && y - 1 >= 0)
-                {
+                if (x - 1 >= 0 && y - 1 >= 0){
                     if (grid[x - 1, y - 1].IsAlive)
                     {
-                        numNeighbors++;
+                        totalNeighbors++;
                     }
                 }
-                grid[x, y].NumNeighbours = numNeighbors;
-
+                grid[x, y].NumNeighbours = totalNeighbors;
             }
             
         }
@@ -138,6 +128,11 @@ public class GridData : ScriptableObject
         {
             for (int y = 0; y < _gridAttrib.height; y++)
             {
+                //-Rules
+                //Any live cell with fewer than two live neighbours dies, as if by underpopulation.
+                //Any live cell with two or three live neighbours lives on to the next generation.
+                //Any live cell with more than three live neighbours dies, as if by overpopulation.
+                //Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
                 cell_instance = grid[x, y];
                 if (!cell_instance.IsAlive && (cell_instance.NumNeighbours == 3)){
                     cell_instance.SetAlive(true);
