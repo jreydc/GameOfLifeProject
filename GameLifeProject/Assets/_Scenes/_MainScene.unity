@@ -2351,6 +2351,8 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
+    - m_Text: Select Panel
+      m_Image: {fileID: 0}
     - m_Text: Grid Dimension
       m_Image: {fileID: 0}
     - m_Text: Cell Color
@@ -2839,7 +2841,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1593392356}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2007632979}
+        m_MethodName: DropdownDisplayDisabled
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1593392356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3136,7 +3149,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Grid Dimension
+  m_Text: Select Panel
 --- !u!222 &1800538560
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3276,7 +3289,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2007632979}
-        m_MethodName: DropdownDisplay
+        m_MethodName: DropdownDisplayEnabled
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
