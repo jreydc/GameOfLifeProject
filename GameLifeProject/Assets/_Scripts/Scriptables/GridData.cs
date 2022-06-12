@@ -149,4 +149,8 @@ public class GridData : ScriptableObject
         }
         return false;
     }
+
+    public void RandomizedColors(){   
+        cell_instance.GetComponent<SpriteRenderer>().color = UnityEngine.Random.ColorHSV();
+    }
 }
