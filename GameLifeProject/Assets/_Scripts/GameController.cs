@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
@@ -8,17 +6,19 @@ public class GameController : MonoBehaviour
     [SerializeField]private GridData _gridModel;
     public UIModelControls _uiControl;
 
-    private Timer _timer;
+    [SerializeField]private Timer _timer;
 
     private Cell[,] grid;
 
     enum Choices{ GridDimension, Colors, Speed };
+
+    enum Levels{};
     private string _currentLevelName = string.Empty;
 
     private void Awake() {
-        _timer.time = 0;
+        _timer.time = 0f;
         _timer.timerSpeed = 0.1f;
-        _timer.time_scale = Time.timeScale;
+        _timer.time_scale = 1f;
 
         _gridModel._gridAttrib.defaultHeight = 40; //default size
         _gridModel._gridAttrib.defaultWidth = 40;//default size
@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
     }
 
     private void Start(){
-        SceneManager.LoadSceneAsync("StartScene", LoadSceneMode.Additive);
+        LoadLevel("StartScene");
         _gridModel.GridCreation(_gridModel._gridAttrib.width, _gridModel._gridAttrib.height);
         _gridModel.CellManagement(_gridModel._gridAttrib.width, _gridModel._gridAttrib.height);
     }
@@ -53,8 +53,9 @@ public class GameController : MonoBehaviour
 
    public void LoadLevel(string levelName)
     {
-        _timer.time_scale = 0f;
-        SceneManager.LoadSceneAsync(levelName);
+        //_timer.time_scale = 0f;
+        Time.timeScale = 0f;
+        SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
         _currentLevelName = levelName;
     }
 
