@@ -2471,6 +2471,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 353039687383915986, guid: de0acfc6c411028499208778ba88a5ac,
         type: 3}
+      propertyPath: _timer
+      value: 
+      objectReference: {fileID: 11400000, guid: 73ae74b62f9e3674c88781834c7acece,
+        type: 2}
+    - target: {fileID: 353039687383915986, guid: de0acfc6c411028499208778ba88a5ac,
+        type: 3}
       propertyPath: _gridModel
       value: 
       objectReference: {fileID: 11400000, guid: 37c59500e4122fb439772e4623be4c7c,
