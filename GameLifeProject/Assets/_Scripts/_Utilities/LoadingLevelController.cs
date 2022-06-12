@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[CreateAssetMenu(menuName = "LoadingLevel", fileName = "LoadController")]
-public class LoadingLevelController : ScriptableObject
+
+public class LoadingLevelController : MonoBehaviour
 {
 
     private string _currentLevelName = string.Empty;

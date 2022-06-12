@@ -42,13 +42,12 @@ public class SettingsController : Singleton<SettingsController>
         Debug.Log("GridUIControls"+_inputWidth.text+_inputHeight.text);
     }
 
-    public void RandomizedColors(){
-        /* Cell cell_instance = Instantiate(Resources.Load("Prefab/Cell", typeof(Cell)), transform.position, Quaternion.identity) as Cell;
-        cell_instance.Colors = UnityEngine.Random.ColorHSV(); */
-    }
-
     public void SettingsImplementation(){
         _gridModel.Neighbours();
         _gridModel.PopulationControl();
+    }
+
+    public void SetCellColors(){
+        _gridModel.RandomizedColors();
     }
 }
