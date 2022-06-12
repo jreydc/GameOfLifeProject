@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
     [SerializeField]private GridData _gridModel;
     public UIModelControls _uiControl;
 
+    
+
     private Cell[,] grid;
 
     enum Choices{ GridDimension, Colors, Speed };

@@ -9,6 +9,7 @@ public class UIModelControls : MonoBehaviour
     [SerializeField]private InputField _inputHeight;
     private Button _submit;
     private bool selected;
+
     [SerializeField]private Dropdown dropdown;
     [SerializeField]private GameObject dropdownPanel;
     [SerializeField]private GameObject gridPanel;
@@ -34,12 +35,13 @@ public class UIModelControls : MonoBehaviour
     }
 
     public void DropdownDisplayEnabled(){
-        dropdownPanel.SetActive(true);
+        dropdownPanel.SetActive(selected);
     }
 
     public void DropdownDisplayDisabled(){
-        dropdownPanel.SetActive(false);
+        dropdownPanel.SetActive(!selected);
     }
+
 
     public void PanelOnDisplay(){
         if (dropdown.captionText.text == "Grid Dimension"){
