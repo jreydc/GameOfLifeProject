@@ -1,58 +1,58 @@
 ﻿using UnityEngine;
 
 
-public class GameController : MonoBehaviour
+public class GameController : Singleton<GameController>
 {
-    private GameController _instance;
     [SerializeField]private GridData _gridModel;
     [SerializeField]private LoadingLevelController _loading;
     [SerializeField]private UIModelControls _uiControl;
 
-    [SerializeField]private TimerController _timer;
+    
 
     private Cell[,] grid;
 
-    enum Choices{ GridDimension, Colors, Speed };
+    public enum States{ START, SIMULATE, END };
 
-    protected virtual void Awake() {
-        if(_instance == null){
-           //Debug.Log(typeof(T).ToString() + " is NULL.");
-            _instance = this;
-            DontDestroyOnLoad(transform.root.gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            //Debug.Log(typeof(T).ToString() + " has tried to instantiate again!");
-        }
+    States _currentState = States.START;
+    public States CurrentState{
+        get { return _currentState; }
+        private set { _currentState = value; }
     }
 
     private void Start(){
-        _timer.TimerInitializations();
-           
-        SetGridDimension();
-        
+
+        SetGameSettings();
         _loading.LoadLevel("StartScene");
-        _gridModel.GridCreation(_gridModel._gridAttrib.width, _gridModel._gridAttrib.height);
-        _gridModel.CellManagement(_gridModel._gridAttrib.width, _gridModel._gridAttrib.height);
-    }
-
-    private void Update(){
-        if (_timer.timerInstance.time >= _timer.timerInstance.timerSpeed){
-            _timer.timerInstance.time = 0f;
-            _gridModel.Neighbours();
-            _gridModel.PopulationControl();
-        }else{
-            _timer.timerInstance.time += Time.deltaTime;
-        }
         
     }
 
-    public void SetGridDimension(){
-        _uiControl.GridUIControls();
+    public void SetGameSettings(){
+        //_uiControl.GridUIControls();
     }
 
     public void SetCellColors(){
-        _uiControl.RandomizedColors();
+        //_uiControl.RandomizedColors();
     }
+
+    public void UpdateState(States state)
+    {
+        States previousState = _currentState;
+        _currentState = state;
+
+        switch (_currentState)
+        {
+            case States.START:
+                break;
+
+            case States.SIMULATE:
+                break;
+
+            case States.END:
+                break;
+
+            default:
+                break;
+        }
+    }
+
 }

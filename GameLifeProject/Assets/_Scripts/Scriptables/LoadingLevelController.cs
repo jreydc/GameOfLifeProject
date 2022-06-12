@@ -4,9 +4,11 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(menuName = "LoadingLevel", fileName = "LoadController")]
 public class LoadingLevelController : ScriptableObject
 {
+
     private string _currentLevelName = string.Empty;
     public void LoadLevel(string levelName)
     {
+        GameController._SingleInstance.UpdateState(GameController.States.END);
         //_timer.time_scale = 0f;
         Time.timeScale = 0f;
         SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
@@ -15,6 +17,7 @@ public class LoadingLevelController : ScriptableObject
 
     public void UnloadLevel(string levelName)
     {
+        GameController._SingleInstance.UpdateState(GameController.States.SIMULATE);
         Time.timeScale = 1f;
         SceneManager.UnloadSceneAsync(levelName);
     }
