@@ -29,10 +29,8 @@ public class GameController : MonoBehaviour
 
     private void Start(){
         _timer.TimerInitializations();
-        _gridModel._gridAttrib.defaultHeight = 40; //default size
-        _gridModel._gridAttrib.defaultWidth = 40;//default size
-        _gridModel._gridAttrib.width = _gridModel._gridAttrib.defaultWidth;
-        _gridModel._gridAttrib.height = _gridModel._gridAttrib.defaultHeight;    
+           
+        SetGridDimension();
         
         _loading.LoadLevel("StartScene");
         _gridModel.GridCreation(_gridModel._gridAttrib.width, _gridModel._gridAttrib.height);
