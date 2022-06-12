@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
 
-public class GameController : MonoBehaviour
+public class GameController : Singleton<GameController>
 {
+    private GameController _instance;
     [SerializeField]private GridData _gridModel;
     [SerializeField]private LoadingLevelController _loading;
     [SerializeField]private UIModelControls _uiControl;
@@ -13,15 +14,13 @@ public class GameController : MonoBehaviour
 
     enum Choices{ GridDimension, Colors, Speed };
 
-    private void Awake() {
+    private void Start(){
         _timer.TimerInitializations();
         _gridModel._gridAttrib.defaultHeight = 40; //default size
         _gridModel._gridAttrib.defaultWidth = 40;//default size
         _gridModel._gridAttrib.width = _gridModel._gridAttrib.defaultWidth;
         _gridModel._gridAttrib.height = _gridModel._gridAttrib.defaultHeight;    
-    }
-
-    private void Start(){
+        
         _loading.LoadLevel("StartScene");
         _gridModel.GridCreation(_gridModel._gridAttrib.width, _gridModel._gridAttrib.height);
         _gridModel.CellManagement(_gridModel._gridAttrib.width, _gridModel._gridAttrib.height);
