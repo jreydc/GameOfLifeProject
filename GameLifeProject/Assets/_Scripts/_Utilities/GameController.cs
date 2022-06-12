@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-public class GameController : Singleton<GameController>
+public class GameController : MonoBehaviour
 {
     private GameController _instance;
     [SerializeField]private GridData _gridModel;
@@ -13,6 +13,19 @@ public class GameController : Singleton<GameController>
     private Cell[,] grid;
 
     enum Choices{ GridDimension, Colors, Speed };
+
+    protected virtual void Awake() {
+        if(_instance == null){
+           //Debug.Log(typeof(T).ToString() + " is NULL.");
+            _instance = this;
+            DontDestroyOnLoad(transform.root.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            //Debug.Log(typeof(T).ToString() + " has tried to instantiate again!");
+        }
+    }
 
     private void Start(){
         _timer.TimerInitializations();
