@@ -5,14 +5,13 @@ public class GameController : MonoBehaviour
 {
     [SerializeField]private GridData _gridModel;
     [SerializeField]private LoadingLevelController _loading;
-    public UIModelControls _uiControl;
+    [SerializeField]private UIModelControls _uiControl;
 
     [SerializeField]private TimerController _timer;
 
     private Cell[,] grid;
 
     enum Choices{ GridDimension, Colors, Speed };
-
 
     private void Awake() {
         _timer.TimerInitializations();

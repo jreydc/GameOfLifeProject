@@ -17,6 +17,9 @@ TextureImporter:
   - first:
       213: -4853824523064533287
     second: Esc
+  - first:
+      213: -753431888473554220
+    second: Windows_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -230,7 +233,7 @@ TextureImporter:
         width: 125
         height: 132
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -238,6 +241,27 @@ TextureImporter:
       bones: []
       spriteID: 9de98ac1050c3acb0800000000000000
       internalID: -4853824523064533287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Windows_5
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 2970
+        width: 138
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d2051570b54b85f0800000000000000
+      internalID: -753431888473554220
       vertices: []
       indices: 
       edges: []
