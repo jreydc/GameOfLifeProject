@@ -4,7 +4,7 @@
 public class GameController : MonoBehaviour
 {
     [SerializeField]private GridData _gridModel;
-    private LoadingLevelController _loading;
+    [SerializeField]private LoadingLevelController _loading;
     public UIModelControls _uiControl;
 
     [SerializeField]private TimerController _timer;

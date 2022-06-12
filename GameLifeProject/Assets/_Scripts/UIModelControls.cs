@@ -17,7 +17,6 @@ public class UIModelControls : MonoBehaviour
 
     private void Start(){ 
         dropdown = GetComponent<Dropdown>();
-        dropdown.ClearOptions();
         selected = true;
     }
 
