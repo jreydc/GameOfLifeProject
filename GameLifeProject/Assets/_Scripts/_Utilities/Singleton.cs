@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T: Singleton<T>
+public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
-    private static T _instance;
-    public static T Instance{
-        get{return _instance;}
-    }
+    public static T _SingleInstance;//Singleton instance for access
 
-    protected virtual void Awake() {
-        if(_instance == null){
+    protected virtual void Awake()//for Base method overriding access to a Singleton Classes
+    {
+        if(_SingleInstance == null){
            //Debug.Log(typeof(T).ToString() + " is NULL.");
-            _instance = this as T;
+           _SingleInstance = this as T;
             DontDestroyOnLoad(transform.root.gameObject);
         }
         else

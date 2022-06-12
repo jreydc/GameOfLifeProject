@@ -3,7 +3,6 @@
 [CreateAssetMenu(menuName = "Grid", fileName = "GridModel")]
 public class GridData : ScriptableObject
 {
-    public static GridData  _gridDataInstance;
     public GridAttrib _gridAttrib;
     private Cell[,] grid;
 

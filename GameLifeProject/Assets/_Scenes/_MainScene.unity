@@ -615,7 +615,6 @@ MonoBehaviour:
   _gridModel: {fileID: 11400000, guid: 37c59500e4122fb439772e4623be4c7c, type: 2}
   _loading: {fileID: 11400000, guid: 27f76fb4f9d100243a5b26f5a556b9f7, type: 2}
   _uiControl: {fileID: 2007632979}
-  _timer: {fileID: 11400000, guid: 73ae74b62f9e3674c88781834c7acece, type: 2}
 --- !u!1 &1860563930
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,13 +789,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a549d31b2a424a41b72675768922c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputWidth: {fileID: 0}
-  _inputHeight: {fileID: 0}
-  dropdown: {fileID: 0}
-  dropdownPanel: {fileID: 0}
-  gridPanel: {fileID: 0}
-  colorPanel: {fileID: 0}
-  speedPanel: {fileID: 0}
+  _gridModel: {fileID: 11400000, guid: 37c59500e4122fb439772e4623be4c7c, type: 2}
+  _timer: {fileID: 11400000, guid: 73ae74b62f9e3674c88781834c7acece, type: 2}
+  _inputWidth: {fileID: 2922306351089431780, guid: 3cb2593eba2413840af93a016c81a736,
+    type: 3}
+  _inputHeight: {fileID: 7830485582405667974, guid: c5057cab624e26942871149bb6ddef64,
+    type: 3}
+  _inputSpeed: {fileID: 6819869601795532797, guid: 404ed98fe0d8352428f27a75f952bff5,
+    type: 3}
 --- !u!4 &2007632980
 Transform:
   m_ObjectHideFlags: 0
