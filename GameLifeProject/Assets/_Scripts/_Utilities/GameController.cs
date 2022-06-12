@@ -20,18 +20,8 @@ public class GameController : Singleton<GameController>
     }
 
     private void Start(){
-
-        SetGameSettings();
         _loading.LoadLevel("StartScene");
         
-    }
-
-    public void SetGameSettings(){
-        //_uiControl.GridUIControls();
-    }
-
-    public void SetCellColors(){
-        //_uiControl.RandomizedColors();
     }
 
     public void UpdateState(States state)

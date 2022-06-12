@@ -15,7 +15,7 @@ public class GridData : ScriptableObject
         Debug.Log("Grid Creation"+_gridAttrib.width+"-"+_gridAttrib.height);
     }
 
-    public void CellManagement(int rows, int cols){
+    public void CellManagement(int rows, int cols, Color color){
         for (int x = 0; x < rows; x++)
         {
             for (int y = 0; y < cols; y++)
@@ -24,6 +24,7 @@ public class GridData : ScriptableObject
                 grid[x, y] = cell_instance;
                 cell_instance.cellInfo.x = x;
                 cell_instance.cellInfo.y = y;
+                cell_instance.GetComponent<SpriteRenderer>().color = color;
                 cell_instance.SetAlive(RandomAliveCell());   
             }
         }
@@ -150,7 +151,4 @@ public class GridData : ScriptableObject
         return false;
     }
 
-    public void RandomizedColors(){   
-        cell_instance.GetComponent<SpriteRenderer>().color = UnityEngine.Random.ColorHSV();
-    }
 }
