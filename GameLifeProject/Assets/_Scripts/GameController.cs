@@ -6,7 +6,7 @@ public class GameController : MonoBehaviour
     [SerializeField]private GridData _gridModel;
     public UIModelControls _uiControl;
 
-    [SerializeField]private Timer _timer;
+    [SerializeField]private TimerController _timer;
 
     private Cell[,] grid;
 
@@ -16,9 +16,9 @@ public class GameController : MonoBehaviour
     private string _currentLevelName = string.Empty;
 
     private void Awake() {
-        _timer.time = 0f;
-        _timer.timerSpeed = 0.1f;
-        _timer.time_scale = 1f;
+        _timer.timerInstance.time = 0f;
+        _timer.timerInstance.timerSpeed = 0.1f;
+        _timer.timerInstance.time_scale = 1f;
 
         _gridModel._gridAttrib.defaultHeight = 40; //default size
         _gridModel._gridAttrib.defaultWidth = 40;//default size
@@ -33,12 +33,12 @@ public class GameController : MonoBehaviour
     }
 
     private void Update(){
-        if (_timer.time >= _timer.timerSpeed){
-            _timer.time = 0f;
+        if (_timer.timerInstance.time >= _timer.timerInstance.timerSpeed){
+            _timer.timerInstance.time = 0f;
             _gridModel.Neighbours();
             _gridModel.PopulationControl();
         }else{
-            _timer.time += Time.deltaTime;
+            _timer.timerInstance.time += Time.deltaTime;
         }
         
     }
@@ -61,6 +61,7 @@ public class GameController : MonoBehaviour
 
     public void UnloadLevel(string levelName)
     {
+        Time.timeScale = 1f;
         SceneManager.UnloadSceneAsync(levelName);
     }
 
