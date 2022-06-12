@@ -12,6 +12,7 @@ public class SettingsController : Singleton<SettingsController>
     [SerializeField]private InputField _inputHeight;
     [SerializeField]private InputField _inputSpeed;
     
+    private Color color;
     public TimerController TimerInstanstiate{
         get{return _timer;}
         private set{_timer = value;}
@@ -32,7 +33,8 @@ public class SettingsController : Singleton<SettingsController>
         _timer.timerInstance.timerSpeed = speed;
         
         _gridModel.GridCreation(width, height);
-        _gridModel.CellManagement(width, height);
+        SetCellColors();
+        _gridModel.CellManagement(width, height, color);
         
         //_gridModel._gridAttrib.defaultHeight = 40; //default size
         //_gridModel._gridAttrib.defaultWidth = 40;//default size
@@ -47,7 +49,7 @@ public class SettingsController : Singleton<SettingsController>
         _gridModel.PopulationControl();
     }
 
-    public void SetCellColors(){
-        _gridModel.RandomizedColors();
+    public void SetCellColors(){ 
+        color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
     }
 }
