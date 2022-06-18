@@ -29,15 +29,5 @@ public class UIView : MonoBehaviour
         _gridModel._gridAttrib.height = height; */
         
         SettingsController._SingleInstance.SettingsImplementation(width, height, speed);
-        //_gridModel.GridCreation(width, height);
-        //SetCellColors();
-        //_gridModel.CellManagement(width, height, color);
-        
-        //_gridModel._gridAttrib.defaultHeight = 40; //default size
-        //_gridModel._gridAttrib.defaultWidth = 40;//default size
-        //_gridModel._gridAttrib.width = _gridModel._gridAttrib.defaultWidth;
-        //_gridModel._gridAttrib.height = _gridModel._gridAttrib.defaultHeight; 
-
-        Debug.Log("GridUIControls"+_inputWidth.text+_inputHeight.text);
     }
 }
