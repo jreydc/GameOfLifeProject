@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "Grid", fileName = "GridModel")]
 public class GridData : ScriptableObject
@@ -8,12 +8,12 @@ public class GridData : ScriptableObject
     private Cell cell_instance;
     private Color color;
 
-    private int _cellAlive = 0;
+    private int _cellAlive;
     public int CellAlive{
         get{return _cellAlive;}
         private set{_cellAlive = value;}
     }
-    private int _cellDead = 0;
+    private int _cellDead;
     public int CellDead{
         get{return _cellDead;}
         private set{_cellDead = value;}
@@ -138,19 +138,12 @@ public class GridData : ScriptableObject
         {
             for (int y = 0; y < _gridAttrib.height; y++)
             {
-                cell_instance = grid[x, y];
-                if (cell_instance.IsAlive){//cell status counts
-                    _cellAlive += 1;
-                    _cellDead -= 1;
-                }else{
-                    _cellDead += 1;
-                }
-
                 //-Rules implementation
                 //Any live cell with fewer than two live neighbours dies, as if by underpopulation.
                 //Any live cell with two or three live neighbours lives on to the next generation.
                 //Any live cell with more than three live neighbours dies, as if by overpopulation.
                 //Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+                Cell cell_instance = grid[x, y];
                 if (!cell_instance.IsAlive && (cell_instance.NumNeighbours == 3)){
                     cell_instance.SetAlive(true);
                 }else if (cell_instance.IsAlive && (cell_instance.NumNeighbours < 2 || cell_instance.NumNeighbours > 3)){
@@ -162,7 +155,27 @@ public class GridData : ScriptableObject
         }
     }
 
-    private bool RandomAliveCell(){
+    public void CellCounter(){
+        int maxCell = _gridAttrib.width * _gridAttrib.height;
+        _cellAlive = 0;
+        _cellDead = 0;
+        for (int x = 0; x < _gridAttrib.width; x++)
+        {
+            for (int y = 0; y < _gridAttrib.height; y++)
+            {
+                Cell cell_instance = grid[x, y];
+                if (cell_instance.IsAlive){//cell status counts
+                    _cellAlive++;
+                }else{
+                    _cellDead++;
+                }
+            }
+        }
+        _cellAlive = maxCell - _cellDead;//counts the cell alive
+        _cellDead = maxCell - _cellAlive;//counts the cell dead
+        //Debug.Log(maxCell);
+    }
+    private bool RandomAliveCell(){ //random alive cells
         int rand = UnityEngine.Random.Range(0, 100);
         if (rand > 75){
             return true;
@@ -170,8 +183,8 @@ public class GridData : ScriptableObject
         return false;
     }
 
-    public Color SetCellColors(){ 
-        color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+    public Color SetCellColors(){ //randomized color
+        color = UnityEngine.Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
 
         return color;
     }

@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SettingsController : Singleton<SettingsController>
 {
@@ -14,6 +12,11 @@ public class SettingsController : Singleton<SettingsController>
         get{return _timer;}
         private set{_timer = value;}
     }
+
+    public GridData GridModel{
+        get{return _gridModel;}
+        private set{_gridModel = value;}
+    }
     
     public void SettingsImplementation(int width, int height, float speed){
         _timer.timerInstance.timerSpeed = speed;
@@ -25,6 +28,7 @@ public class SettingsController : Singleton<SettingsController>
     public void Simulation(){
         _gridModel.Neighbours();
         _gridModel.PopulationControl();
+        _gridModel.CellCounter();
     }
 
     public int SetCellAliveDisplay(){
