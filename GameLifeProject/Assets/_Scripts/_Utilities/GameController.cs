@@ -7,10 +7,6 @@ public class GameController : Singleton<GameController>
     [SerializeField]private LoadingLevelController _loading;
     [SerializeField]private UIModelControls _uiControl;
 
-    
-
-    private Cell[,] grid;
-
     public enum States{ START, SIMULATE, END };
 
     States _currentState = States.START;

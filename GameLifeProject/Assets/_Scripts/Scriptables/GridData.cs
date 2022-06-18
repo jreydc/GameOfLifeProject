@@ -5,8 +5,8 @@ public class GridData : ScriptableObject
 {
     public GridAttrib _gridAttrib;
     private Cell[,] grid;
-
     private Cell cell_instance;
+    private Color color;
     
     public void GridCreation(int rows, int cols){
         grid = new Cell[rows, cols];
@@ -149,6 +149,10 @@ public class GridData : ScriptableObject
             return true;
         }
         return false;
+    }
+
+    public void SetCellColors(){ 
+        color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
     }
 
 }
