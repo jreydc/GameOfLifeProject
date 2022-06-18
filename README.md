@@ -10,5 +10,5 @@ transitions occur:
 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by 
 reproduction.
 
-#Unity
+**#Unity**
 On the game engine, please run first the _MainScene to view the UI settings for the grid and to properly run the project. Thank you
