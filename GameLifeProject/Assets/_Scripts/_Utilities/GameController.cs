@@ -3,7 +3,6 @@
 
 public class GameController : Singleton<GameController>
 {
-    [SerializeField]private GridData _gridModel;
     [SerializeField]private LoadingLevelController _loading;
     [SerializeField]private UIModelControls _uiControl;
 

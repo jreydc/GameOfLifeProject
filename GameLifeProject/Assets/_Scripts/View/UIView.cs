@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class UIView : Singleton<UIView>
+public class UIView : MonoBehaviour
 {
-    [SerializeField]private TimerController _timer;
+    //[SerializeField]private TimerController _timer;
     //private SettingsController _setControls;
     [SerializeField]private InputField _inputWidth;
     [SerializeField]private InputField _inputHeight;
@@ -27,7 +27,6 @@ public class UIView : Singleton<UIView>
 
         /* _gridModel._gridAttrib.width = width;
         _gridModel._gridAttrib.height = height; */
-        _timer.timerInstance.timerSpeed = speed;
         
         SettingsController._SingleInstance.SettingsImplementation(width, height, speed);
         //_gridModel.GridCreation(width, height);

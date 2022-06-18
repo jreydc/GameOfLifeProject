@@ -187,11 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4f8cd67d1707c4d84768fbd275f26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timer: {fileID: 11400000, guid: 73ae74b62f9e3674c88781834c7acece, type: 2}
   _gridModel: {fileID: 11400000, guid: 37c59500e4122fb439772e4623be4c7c, type: 2}
-  _inputWidth: {fileID: 515849497332732709}
-  _inputHeight: {fileID: 515849495609838907}
-  _inputSpeed: {fileID: 4607915572572986109}
+  _timer: {fileID: 11400000, guid: 73ae74b62f9e3674c88781834c7acece, type: 2}
 --- !u!4 &212853609
 Transform:
   m_ObjectHideFlags: 0
@@ -398,7 +395,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 212853608}
+      - m_Target: {fileID: 4607915573948369060}
         m_MethodName: SetGridSettings
         m_Mode: 1
         m_Arguments:
@@ -1870,6 +1867,7 @@ GameObject:
   - component: {fileID: 4607915573948369056}
   - component: {fileID: 4607915573948369058}
   - component: {fileID: 4607915573948369059}
+  - component: {fileID: 4607915573948369060}
   m_Layer: 5
   m_Name: InputPanel
   m_TagString: Untagged
@@ -1915,3 +1913,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4607915573948369060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4607915573948369057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c45158f9593e09489def3abd1b472b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputWidth: {fileID: 515849497332732709}
+  _inputHeight: {fileID: 515849495609838907}
+  _inputSpeed: {fileID: 4607915572572986109}

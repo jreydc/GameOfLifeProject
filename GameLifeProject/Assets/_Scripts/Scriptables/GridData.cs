@@ -7,7 +7,19 @@ public class GridData : ScriptableObject
     private Cell[,] grid;
     private Cell cell_instance;
     private Color color;
-    
+
+    private int _cellAlive = 0;
+    public int CellAlive{
+        get{return _cellAlive;}
+        private set{_cellAlive = value;}
+    }
+    private int _cellDead = 0;
+    public int CellDead{
+        get{return _cellDead;}
+        private set{_cellDead = value;}
+    }
+
+
     public void GridCreation(int rows, int cols){
         grid = new Cell[rows, cols];
         _gridAttrib.width = rows;
@@ -126,12 +138,19 @@ public class GridData : ScriptableObject
         {
             for (int y = 0; y < _gridAttrib.height; y++)
             {
-                //-Rules
+                cell_instance = grid[x, y];
+                if (cell_instance.IsAlive){//cell status counts
+                    _cellAlive += 1;
+                    _cellDead -= 1;
+                }else{
+                    _cellDead += 1;
+                }
+
+                //-Rules implementation
                 //Any live cell with fewer than two live neighbours dies, as if by underpopulation.
                 //Any live cell with two or three live neighbours lives on to the next generation.
                 //Any live cell with more than three live neighbours dies, as if by overpopulation.
                 //Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
-                cell_instance = grid[x, y];
                 if (!cell_instance.IsAlive && (cell_instance.NumNeighbours == 3)){
                     cell_instance.SetAlive(true);
                 }else if (cell_instance.IsAlive && (cell_instance.NumNeighbours < 2 || cell_instance.NumNeighbours > 3)){

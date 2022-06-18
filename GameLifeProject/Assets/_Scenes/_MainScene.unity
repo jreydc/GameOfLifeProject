@@ -440,7 +440,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 20
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -698,7 +698,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 20
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -724,6 +724,7 @@ GameObject:
   - component: {fileID: 1427784696}
   - component: {fileID: 1427784698}
   - component: {fileID: 1427784697}
+  - component: {fileID: 1427784699}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -789,6 +790,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427784695}
   m_CullTransparentMesh: 0
+--- !u!114 &1427784699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427784695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 479d83be7670cac438273bc1d38a686b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellAliveText: {fileID: 1250102660}
+  cellDeadText: {fileID: 1564680011}
 --- !u!1 &1457721135
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,7 +1017,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d144d282ba5bb40a78b519f42b77e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gridModel: {fileID: 11400000, guid: 37c59500e4122fb439772e4623be4c7c, type: 2}
   _loading: {fileID: 11400000, guid: 27f76fb4f9d100243a5b26f5a556b9f7, type: 2}
   _uiControl: {fileID: 2007632979}
 --- !u!1 &1973056501
